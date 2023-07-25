@@ -1,10 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import   Error  from './pages/Error';
+import  { Error,Landing}  from './pages';
 const App = () => {
   return(
   <BrowserRouter>
   <Routes>
-    <Route path='/' element={<Error/>}/>
+    <Route path='/eror' element={<Error/>}/>
+    <Route path='/' element={<Landing/>}/>
+
 
     
   </Routes>
