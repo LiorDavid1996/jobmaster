@@ -3,6 +3,7 @@ require('express-async-errors');
 const express = require('express');
 const app = express();
 const connectDB = require('./db/connect');
+const authenticateUser = require('./middleware/authentication');
 app.use(express.json())
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
@@ -13,7 +14,7 @@ app.get('/',(req,res)=>{
 })
 const port = process.env.PORT || 5000;
 app.use('/api/auth', authRouter);
-app.use('/api/jobs', jobsRouter);
+app.use('/api/jobs',authenticateUser, jobsRouter);
 const start = async () => {
     try {
         await connectDB(process.env.MONGO_URI);
