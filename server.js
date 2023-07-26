@@ -1,10 +1,13 @@
 require('dotenv').config();
 require('express-async-errors');
 const express = require('express');
+const cors = require('cors');
+
 const app = express();
 const connectDB = require('./db/connect');
 const authenticateUser = require('./middleware/authentication');
 app.use(express.json())
+app.use(cors())
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 const authRouter = require('./routes/auth');
@@ -15,6 +18,7 @@ app.get('/',(req,res)=>{
 const port = process.env.PORT || 5000;
 app.use('/api/auth', authRouter);
 app.use('/api/jobs',authenticateUser, jobsRouter);
+console.log("ll");
 const start = async () => {
     try {
         await connectDB(process.env.MONGO_URI);
