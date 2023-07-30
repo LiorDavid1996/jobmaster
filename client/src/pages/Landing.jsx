@@ -1,6 +1,6 @@
 import main from '../assets/images/main.svg';
 import Wrapper from '../assets/wrappers/LandingPage';
-import  {Logo }from '../componnents';
+import { Logo } from '../components';
 import { Link } from 'react-router-dom';
 const Landing = () => {
   return (
@@ -9,6 +9,7 @@ const Landing = () => {
         <Logo />
       </nav>
       <div className='container page'>
+        {/* info */}
         <div className='info'>
           <h1>
             job <span>tracking</span> app
