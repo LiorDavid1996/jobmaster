@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "node -r esm jest -c jest.config.cjs"
+    "test": "vitest"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
@@ -27,6 +27,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^29.5.3",
     "@types/react": "^18.2.18",
     "@types/react-dom": "^18.2.7",
@@ -36,9 +37,11 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "esm": "^3.2.25",
-    "jest": "^29.6.2",
+    "jest": "^29.6.4",
     "jest-environment-jsdom": "^29.6.2",
+    "jsdom": "^22.1.0",
     "ts-jest": "^29.1.1",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vitest": "^0.34.1"
   }
 }
