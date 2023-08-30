@@ -33,11 +33,9 @@ function Register() {
       return;
     }
     if (isMember) {
-      console.log(`register.jsx-register ${email,  password ,name}`);
       dispatch(loginUser({ email: email, password: password }));
       return;
     }
-    console.log(`register.jsx-login ${email,  password ,name}`);
     dispatch(registerUser({ name, email, password }));
   };
 

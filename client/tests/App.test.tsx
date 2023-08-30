@@ -8,6 +8,7 @@ import { store } from '../src/store';
 import { toast } from 'react-toastify';
 import AddJob from '../src/pages/dashboard/AddJob'
 import Profile from '../src/pages/dashboard/Profile'
+import { act } from 'react-dom/test-utils';
 
 test('renders landing page', () => {
   render(
@@ -16,8 +17,6 @@ test('renders landing page', () => {
     </BrowserRouter>
   )
   ;
-  
-  // Assuming your Landing component renders some specific content
   const landingText = screen.getByText(/Login/i);
   expect(landingText).toBeInTheDocument();
 });
@@ -82,7 +81,9 @@ test('enters job information and submits', async () => {
   fireEvent.change(statusSelect, { target: { value: 'open' } });
   fireEvent.change(jobTypeSelect, { target: { value: 'full-time' } });
 
-  fireEvent.click(submitButton)})
+  fireEvent.click(submitButton)
+  expect(positionInput.value).toBe('Software Engineer');
+})
 
   test('enters user information and submits', async () => {
     render(
@@ -102,7 +103,9 @@ test('enters job information and submits', async () => {
     fireEvent.change(emailInput, { target: { value: 'john@example.com' } });
     fireEvent.change(locationInput, { target: { value: 'City' } });
   
-    fireEvent.click(submitButton);
+    act(() => {
+      fireEvent.click(submitButton);
+    });
   
-    
+    expect(nameInput.value).toBe('John');
   });
