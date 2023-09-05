@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Logo, FormRow } from '../componnents';
-import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
+import { Logo, FormRow } from '../components';
+import Wrapper from '../assets/wrappers/RegisterPage';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser, registerUser } from '../features/user/userSlice';
@@ -54,6 +54,7 @@ function Register() {
       <form className='form' onSubmit={onSubmit}>
         <Logo />
         <h3>{values.isMember ? 'Login' : 'Register'}</h3>
+        {/* name field */}
         {!values.isMember && (
           <FormRow
             type='text'
@@ -62,12 +63,14 @@ function Register() {
             handleChange={handleChange}
           />
         )}
+        {/* email field */}
         <FormRow
           type='email'
           name='email'
           value={values.email}
           handleChange={handleChange}
         />
+        {/* password field */}
         <FormRow
           type='password'
           name='password'
