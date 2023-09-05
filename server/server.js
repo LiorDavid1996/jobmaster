@@ -25,16 +25,20 @@ app.set('trust proxy', 1)
 app.use(express.static(path.resolve(__dirname, './client/build')));
 app.use(express.json());
 app.use(helmet());
-
+app.get("/", (req, res)=> {
+  res.send("Hello World!");
+});
 app.use(xss());
 
 // routes
 app.use('/api/auth', authRouter);
 app.use('/api/jobs', authenticateUser, jobsRouter);
 
+
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
 });
+
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
@@ -46,6 +50,7 @@ const start = async () => {
     await connectDB(process.env.MONGO_URI);
     app.listen(port, () =>
       console.log(`Server is listening on port ${port}...`)
+      
     );
   } catch (error) {
     console.log(error);
